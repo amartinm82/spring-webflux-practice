@@ -1,0 +1,58 @@
+Reactive Account Service is an example application that shows how to build a web application with:
+
+ - Spring Boot 2
+ - Spring Webflux with annotation based model.
+ - Spring Reactive Data MongoDb
+ - Embedded MongoDB.
+
+## Getting started
+
+Prerequisites:
+
+ - [Install Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+ 
+ - In application.properties, configure appropriate values:
+ 
+ -- server.port
+ -- spring.data.mongodb.uri
+ -- spring.data.mongodb.database
+
+## Running
+
+ - Run `RxAccountServiceApplication` in your IDE, then open `http://localhost:<server.port>/` in your browser and use the various test pages.
+
+
+### cURL Commands
+
+You can try the following API's once the server is running.
+
+GET /account/{id}
+
+curl -X GET \
+  http://localhost:8082/account/1 \
+  -H 'cache-control: no-cache'
+
+GET /account/person/{id}
+
+curl -X GET \
+  http://localhost:8082/account/person/1 \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json'
+
+POST /account
+
+curl -X POST \
+  http://localhost:8082/account/ \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -d '{
+        "accountId": 5,
+        "personId": 1,
+        "accountNumber": "4024 0071 2078 8350",
+        "balance": 100.00
+    }'
+
+## References
+[Spring Framework 5.0 Reactive support]: https://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html
+
+[Spring Data Reactive]: https://spring.io/blog/2016/11/28/going-reactive-with-spring-data
